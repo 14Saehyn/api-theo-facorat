@@ -116,6 +116,10 @@ D'accord, voici le dictionnaire des données pour toutes les ressources :
 | ------------------------ | ------------ | ---------------------- | --------------------------- | --------------------------------------------------------- |
 | Détails de l'Utilisateur | `/users/:id` | `GET`, `PUT`, `DELETE` | `:id` (ID de l'utilisateur) | Obtient, met à jour ou supprime un utilisateur spécifique |
 
+### Modèle Conceptuel des Données (MCD)
+
+<img width="451" alt="SCR-20231230-mjep" src="https://github.com/14Saehyn/api-theo-facorat/ressources/api-mcd-theo-facorat.png">
+
 ## Remarques
 
 - Il peut y avoir une erreur au lancement du container du projet dans les logs. Il suffit en général de sauvegarder un fichier.js pour que cela fonctionne.
