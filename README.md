@@ -3,11 +3,13 @@
 - [Dictionnaire des Données](#dictionnaire-des-données)
 - [Modèle Conceptuel des Données (MCD)](#modèle-conceptuel-des-données-mcd)
 
-[Lancer le Projet](#lancer-le-projet)
-[Conception](#conception)
+///////////////////////////////////////
 
-[Remarques](#remarques)
-[Références](#références)
+- [Lancer le Projet](#lancer-le-projet)
+- [Conception](#conception)
+
+- [Remarques](#remarques)
+- [Références](#références)
 
 ## Lancer le Projet
 
@@ -131,5 +133,5 @@ D'accord, voici le dictionnaire des données pour toutes les ressources :
 ## Références
 
 - [Express.js Documentation](https://expressjs.com/)
-- MySQL Documentation
+- [MySQL Documentation](https://dev.mysql.com/doc/)
 - [RESTful API Design - Best Practices](https://restfulapi.net/)
