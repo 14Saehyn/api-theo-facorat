@@ -1,9 +1,7 @@
 ## Table des Matières
-
-[Dictionnaire des Données](#dictionnaire-des-données)
-
 1. [Lancer le Projet](#lancer-le-projet)
 2. [Conception](#conception)
+- [Dictionnaire des Données](#dictionnaire-des-données)
 - [Modèle Conceptuel des Données (MCD)](#modèle-conceptuel-des-données-mcd)
 3. [Remarques](#remarques)
 4. [Références](#références)
