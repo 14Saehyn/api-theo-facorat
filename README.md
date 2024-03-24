@@ -118,7 +118,7 @@ D'accord, voici le dictionnaire des données pour toutes les ressources :
 
 ### Modèle Conceptuel des Données (MCD)
 
-<img width="451" alt="SCR-20231230-mjep" src="https://github.com/14Saehyn/api-theo-facorat/ressources/api-mcd-theo-facorat.png">
+<img width="451" alt="SCR-20231230-mjep" src="https://github.com/14Saehyn/api-theo-facorat/blob/master/ressources/api-mcd-theo-facorat.png">
 
 ## Remarques
 
