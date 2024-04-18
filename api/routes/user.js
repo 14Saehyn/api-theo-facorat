@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 
+// Cette ressource n'était pas nécessaire pour répondre au sujet
 // Page de création de compte (formulaire)
 router.get("/", async function (req, res, next) {
   const halRepresentation = {
@@ -31,6 +32,8 @@ router.get("/", async function (req, res, next) {
   });
 });
 
+// Authentification ou création d'un nouvel utilisateur ? 
+// Cette ressource n'était pas nécessaire pour répondre au sujet
 // Authentification de l'utilisateur (traitement du formulaire soumis)
 router.post("/", async function (req, res, next) {
   // se connecter à la bdd

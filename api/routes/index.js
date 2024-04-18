@@ -22,6 +22,9 @@ router.get("/", async function (req, res, next) {
       },
       title: "Accueil",
     };
+    //Où est le fichier views/index ?
+    //Soit supprimer la génération d'une vue HTML (elle est présente dans le starter à titre d'exemple)
+    //soit créer le fichier, sinon erreur 500 sur la page d'accueil.
     // Passer halRepresentation à votre modèle Pug
     res.render("index", {
       title: halRepresentation.title,

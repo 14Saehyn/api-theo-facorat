@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 
-// Page d'authentification
+// Page d'authentification (non, plutôt une page d'accueil)
+// Cette ressource aurait pu être servie sur l'URL racine /
 router.get("/", async function (req, res, next) {
   const halRepresentation = {
     _links: {
@@ -29,12 +30,14 @@ router.get("/", async function (req, res, next) {
     message: "Bonjour, veuillez créer votre compte pour pouvoir réserver !",
   };
 
+  //C'est une API RESTful, consommée par des programmes, il faut retourner du JSON et non du HTML !
   res.render("login", {
     _links: halRepresentation._links,
     message: halRepresentation.message,
   });
 });
 
+// Ce n'est pas de l'authentification mais de l'identification 
 // Authentification de l'utilisateur (traitement du formulaire soumis)
 router.post("/", async function (req, res, next) {
   const conn = await db.mysql.createConnection(db.dsn);
@@ -56,6 +59,7 @@ router.post("/", async function (req, res, next) {
     );
     console.log("Rows:", rows);
 
+    //Identification (l'utilisateur existe)
     if (rows.length > 0) {
       const user = rows[0];
       req.session.username = username;

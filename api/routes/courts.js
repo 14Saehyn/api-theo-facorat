@@ -4,7 +4,7 @@ var db = require("../db");
 
 /* GET courts page. */
 router.get("/", async function (req, res, next) {
-  // #swagger.summary = "Page des terrains de tennis"
+  // #swagger.summary = "Page des terrains de badminton ;)"
 
   const conn = await db.mysql.createConnection(db.dsn);
 

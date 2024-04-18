@@ -37,12 +37,19 @@ app.use(express.static(path.join(__dirname, "public")));
  *
  */
 const secretKey = crypto.randomBytes(32).toString("hex");
+
+//L'usage de session (via un cookie) sert uniquement à stocker
+//des données (cle/valeur) le temps d'une session côté serveur (en mémoire vive)
+//Attention, ce module n'est pas destiné à être utilisé en production
+//See http://expressjs.com/en/advanced/best-practice-security.html#use-cookies-securely
 app.use(
   session({
     secret: secretKey, // clé secrète de la session
     resave: true,
     saveUninitialized: true,
     cookie: {
+      secure: false, //a mettre à true pour forcer l'envoi du cookie via requête HTTPS
+      httpOnly: true,
       maxAge: 3600000,
     },
   })
