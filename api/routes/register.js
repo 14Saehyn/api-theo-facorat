@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 const db = "../db";
 
+
+//Cette
 /*
- *Route get pour accéder à la route de regiser
+ *Se créer un compte.
  */
 router.get("/", function (req, res, next) {
   res.render("register", { message: "Bienvenue sur la page d'inscription" });

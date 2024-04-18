@@ -1,10 +1,19 @@
-## Table des Matières
-1. [Lancer le Projet](#lancer-le-projet)
-2. [Conception](#conception)
-- [Dictionnaire des Données](#dictionnaire-des-données)
-- [Modèle Conceptuel des Données (MCD)](#modèle-conceptuel-des-données-mcd)
-3. [Remarques](#remarques)
-4. [Références](#références)
+# Service web RESTful de réservation de terrains de badminton
+
+- [Service web RESTful de réservation de terrains de badminton](#service-web-restful-de-réservation-de-terrains-de-badminton)
+  - [Lancer le Projet](#lancer-le-projet)
+    - [Prérequis](#prérequis)
+    - [Lancer le Projet avec Docker Compose](#lancer-le-projet-avec-docker-compose)
+    - [Tester](#tester)
+      - [API](#api)
+      - [Base de données](#base-de-données)
+      - [Client graphique Adminer pour la base de données MySQL](#client-graphique-adminer-pour-la-base-de-données-mysql)
+  - [Conception](#conception)
+    - [Dictionnaire des Données](#dictionnaire-des-données)
+    - [Modèle Conceptuel des Données (MCD)](#modèle-conceptuel-des-données-mcd)
+  - [Remarques](#remarques)
+  - [Références](#références)
+
 
 ## Lancer le Projet
 
@@ -16,39 +25,38 @@
 
 > N'oubliez pas de supprimer le dossier `.git` si vous désirez créer votre propre dépôt à partir des sources
 
+~~~bash
 rm -R .git
-git init `
+git init 
+~~~
 
 ### Lancer le Projet avec Docker Compose
 
 1.  Dupliquer le fichier `.env.dist` et le renommer en `.env`
 
-`cp .env.dist .env`
+~~~bash
+cp .env.dist .env
+~~~
 
 2.  Installer les dépendances de l'application node.js et générer la documentation Swagger
 
-`pushd api
+~~~bash
+pushd api
 npm install
 npm run swagger-autogen
-popd`
+popd
+~~~
 
 3.  Démarrer le projet avec Docker Compose
 
-`docker-compose up -d`
+`docker compose up -d`
 
 ### Tester
 
 #### API
 
 - Se rendre à l'URL [localhost:5001](http://localhost:5001/)
-- Tester avec [curl](https://curl.se/)
-
-`# Web humain (HTML)
-curl --include localhost:5001
-
-# API (JSON)
-
-curl localhost:5001`
+- Tester avec [curl](https://curl.se/) : `curl --include localhost:5001`
 
 #### Base de données
 
@@ -73,49 +81,28 @@ curl localhost:5001`
 
 ### Dictionnaire des Données
 
-D'accord, voici le dictionnaire des données pour toutes les ressources :
-
-### Dictionnaire des Données
-
-#### Ressource : Réservation
-
-| Ressource   | URL             | Méthodes HTTP | Paramètres d'URL/Variations | Commentaires                                                         |
-| ----------- | --------------- | ------------- | --------------------------- | -------------------------------------------------------------------- |
-| Réservation | `/reservations` | `GET`, `POST` | Aucun                       | Liste de toutes les réservations ou ajout d'une nouvelle réservation |
-
-#### Ressource : Détails de Réservation
-
-| Ressource              | URL                 | Méthodes HTTP          | Paramètres d'URL/Variations  | Commentaires                                               |
-| ---------------------- | ------------------- | ---------------------- | ---------------------------- | ---------------------------------------------------------- |
-| Détails de Réservation | `/reservations/:id` | `GET`, `PUT`, `DELETE` | `:id` (ID de la réservation) | Obtient, met à jour ou supprime une réservation spécifique |
-
-#### Ressource : Court
 
 | Ressource | URL       | Méthodes HTTP | Paramètres d'URL/Variations | Commentaires                                         |
 | --------- | --------- | ------------- | --------------------------- | ---------------------------------------------------- |
+| Réservation | `/reservations` | `GET`, `POST` | Aucun                       | Liste de toutes les réservations ou ajout d'une nouvelle réservation |
+| Détails de Réservation | `/reservations/:id` | `GET`, `PUT`, `DELETE` | `:id` (ID de la réservation) | Obtient, met à jour ou supprime une réservation spécifique |
 | Court     | `/courts` | `GET`, `POST` | Aucun                       | Liste de tous les courts ou ajout d'un nouveau court |
-
-#### Ressource : Détails du Court
-
-| Ressource        | URL           | Méthodes HTTP          | Paramètres d'URL/Variations | Commentaires                                        |
-| ---------------- | ------------- | ---------------------- | --------------------------- | --------------------------------------------------- |
 | Détails du Court | `/courts/:id` | `GET`, `PUT`, `DELETE` | `:id` (ID du court)         | Obtient, met à jour ou supprime un court spécifique |
-
-#### Ressource : Utilisateur
-
-| Ressource   | URL      | Méthodes HTTP | Paramètres d'URL/Variations | Commentaires                                                    |
-| ----------- | -------- | ------------- | --------------------------- | --------------------------------------------------------------- |
 | Utilisateur | `/users` | `GET`, `POST` | Aucun                       | Liste de tous les utilisateurs ou ajout d'un nouvel utilisateur |
-
-#### Ressource : Détails de l'Utilisateur
-
-| Ressource                | URL          | Méthodes HTTP          | Paramètres d'URL/Variations | Commentaires                                              |
-| ------------------------ | ------------ | ---------------------- | --------------------------- | --------------------------------------------------------- |
 | Détails de l'Utilisateur | `/users/:id` | `GET`, `PUT`, `DELETE` | `:id` (ID de l'utilisateur) | Obtient, met à jour ou supprime un utilisateur spécifique |
 
 ### Modèle Conceptuel des Données (MCD)
 
-<img width="451" alt="SCR-20231230-mjep" src="https://github.com/14Saehyn/api-theo-facorat/blob/master/ressources/api-mcd-theo-facorat.png">
+<img width="451" alt="MCD" src="./ressources/api-mcd-theo-facorat.png">
+
+<!-- 
+Ce n'est pas un MCD, mais un Modèle Logique de Données Relationnel. Sur un MCD, il n'est pas question de modèle relationnel et les clefs étrangères ne doivent pas apparaître. Ces contraintes sont dérivées des associations et de leurs cardinalités à partir du MCD.
+
+Le niveau conceptuel des données (MCD) décrit les entités du monde réel, en termes d'objets, de propriétés et de relations, indépendamment de toute technique d'organisation et d'implémentation des données.
+
+Ce modèle se concrétise par des schémas UML ou entités-associations (Merise) représentant la structure du système d'information, du point de vue des données. Doivent y figurer les données (label, type) regroupées par entité et indentifiées par un identifiant, les associations et leurs cardinalités.
+
+ -->
 
 ## Remarques
 
@@ -124,6 +111,10 @@ D'accord, voici le dictionnaire des données pour toutes les ressources :
   Un terrain indisponible ne peut accueillir de nouvelles réservations.
 - Je pense j'aurai dû changer la structure de la base de données.
 - Je pense qu'avoir créé des views m'a fait perdre du temps que j'aurai pû utilisé pour mieux structurer mes réponses json hal et mes requêtes.
+
+<!-- 
+En effet, c'est dommage. Le but de ce module est de créer une API RESTful, un service web qui doit être consommé par des programmes et non par des humains (HTML). D'autant plus que le dossier views et les vues ne sont pas présentes sur le dépôt pour une raison que j'ignore, ce qui fait qu'aucune représentation de ressource ne peut être servie (erreur 500)
+ -->
 
 ## Références
 

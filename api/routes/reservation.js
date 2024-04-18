@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 
+
+//Où est POST /reservations pour réserver un créneau sur un terrain de badminton ?
+
+// Cette ressource n'était pas nécessaire pour répondre au sujet
 // GET all reservations
 router.get("/", async function (req, res, next) {
   const conn = await db.mysql.createConnection(db.dsn);
@@ -91,6 +95,7 @@ router.get("/:id", async function (req, res, next) {
   }
 });
 
+// Cette ressource n'était pas nécessaire pour répondre au sujet
 // PUT update details of a specific reservation
 router.put("/:id", async function (req, res, next) {
   const reservationId = req.params.id;
@@ -139,6 +144,7 @@ router.put("/:id", async function (req, res, next) {
   }
 });
 
+// Cette ressource n'était pas nécessaire pour répondre au sujet
 // DELETE a specific reservation
 router.delete("/:id", async function (req, res, next) {
   const reservationId = req.params.id;
